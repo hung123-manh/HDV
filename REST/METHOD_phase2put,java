@@ -1,0 +1,73 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+public class hLFgRpt3 {
+
+    public static void main(String[] args) throws Exception {
+
+        String studentCode = "B22DCAT134";
+        String qCode = "hLFgRpt3";
+        String baseUrl = "http://36.50.135.242:2230/api/rest/method";
+
+        String getUrlStr = baseUrl + "?studentCode=" + studentCode + "&qCode=" + qCode;
+
+        URL getUrl = new URL(getUrlStr);
+        HttpURLConnection getConn = (HttpURLConnection) getUrl.openConnection();
+        getConn.setRequestMethod("GET");
+
+        BufferedReader in = new BufferedReader(new InputStreamReader(getConn.getInputStream()));
+        StringBuilder response = new StringBuilder();
+        String line;
+
+        while ((line = in.readLine()) != null) {
+            response.append(line);
+        }
+
+        in.close();
+
+        String jsonStr = response.toString();
+
+        String reqTag = "\"requestId\":\"";
+        int reqStart = jsonStr.indexOf(reqTag) + reqTag.length();
+        int reqEnd = jsonStr.indexOf("\"", reqStart);
+
+        String requestId = jsonStr.substring(reqStart, reqEnd);
+
+        String answer = "{\"status\":\"done\"}";
+
+        URL putUrl = new URL(baseUrl + "/" + requestId);
+
+        HttpURLConnection putConn = (HttpURLConnection) putUrl.openConnection();
+        putConn.setRequestMethod("PUT");
+        putConn.setRequestProperty("Content-Type", "application/json");
+        putConn.setDoOutput(true);
+
+        String jsonPut =
+                "{"
+                + "\"studentCode\":\"" + studentCode + "\","
+                + "\"qCode\":\"" + qCode + "\","
+                + "\"answer\":" + answer
+                + "}";
+
+        OutputStream os = putConn.getOutputStream();
+        os.write(jsonPut.getBytes("UTF-8"));
+        os.flush();
+        os.close();
+
+        BufferedReader resultReader =
+                new BufferedReader(new InputStreamReader(putConn.getInputStream()));
+
+        StringBuilder result = new StringBuilder();
+
+        while ((line = resultReader.readLine()) != null) {
+            result.append(line);
+        }
+
+        resultReader.close();
+
+        System.out.println(result.toString());
+    }
+}
