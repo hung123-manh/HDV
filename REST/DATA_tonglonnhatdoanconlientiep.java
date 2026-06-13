@@ -127,3 +127,14 @@ public class a5MgIpTQ {
         }
     }
 }
+//Một dịch vụ REST được triển khai trên server tại URL http://<Exam_IP>:2230/api/rest/data để xử lý các bài toán với dữ liệu dạng mảng, chuỗi mã và số liệu. Yêu cầu: Viết chương trình tại máy trạm (REST client) để giao tiếp với dịch vụ và thực hiện các công việc sau.
+
+//a. Gửi GET /api/rest/data?studentCode=<mã_sinh_viên>&qCode=<qAlias> để nhận JSON gồm requestId và data.
+
+//b. Server trả về `data` là object gồm `values` (mảng số nguyên) và `k`.
+
+//c. Tìm tổng lớn nhất của mọi đoạn con liên tiếp có độ dài không vượt quá `k` bằng prefix sum và deque.
+
+//d. Gửi POST /api/rest/data/submit với body JSON gồm studentCode, qCode, requestId và answer.
+
+//e. Ví dụ: nếu `values=[-1,4,2,-3,5]` và `k=3` thì `answer` là `7`.
