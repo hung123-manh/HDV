@@ -65,3 +65,16 @@ public class GRPCA {
         channel.shutdown();
     }
 }
+//Một dịch vụ gRPC JudgeService được triển khai trên server tại <Exam_IP>:2240 để xử lý các bài toán về chuỗi và ký tự qua Protocol Buffers.
+
+//Yêu cầu: Viết chương trình tại máy trạm (gRPC client, plaintext, không TLS) để giao tiếp với JudgeService và thực hiện các công việc sau.
+
+//a. Tạo gRPC client plaintext tới cổng 2240 và gọi JudgeService.Request với mã sinh viên và alias runtime được giao.
+
+//b. Server trả về request_id và data là chuỗi các từ phân tách bằng dấu phẩy.
+
+//c. Tách danh sách từ và sắp xếp theo thứ tự từ điển không phân biệt hoa thường.
+
+//d. Gọi JudgeService.Submit với answer là các từ đã sắp xếp, nối bằng dấu phẩy.
+
+//e. Ví dụ: data="banana,apple,cherry" thì answer="apple,banana,cherry".
