@@ -83,3 +83,14 @@ public class nFn8VjtL {
         System.out.println(result.toString());
     }
 }
+//Một dịch vụ REST được triển khai trên server tại URL http://<Exam_IP>:2230/api/rest/header để xử lý các bài toán mã kiểm tra, chữ ký và băm dữ liệu. Yêu cầu: Viết chương trình tại máy trạm (REST client) để giao tiếp với dịch vụ và thực hiện các công việc sau.
+
+//a. Gửi GET /api/rest/header?studentCode=<mã_sinh_viên>&qCode=<qAlias> để nhận JSON gồm requestId và data.
+
+//b. Server trả về `data` là object gồm `payload` và một giá trị checksum để đối chiếu.
+
+//c. Tính CRC32 của `payload` và nộp lại kết quả ở dạng hex chữ thường.
+
+//d. Gửi POST /api/rest/header/submit với body JSON gồm studentCode, qCode, requestId và answer.
+
+//e. Ví dụ: nếu CRC32 của `payload` là `1a2b3c4d` thì `answer` là `1a2b3c4d`.
