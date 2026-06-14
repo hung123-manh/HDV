@@ -161,3 +161,14 @@ public class Fqnlgza2 {
         }
     }
 }
+//Một dịch vụ REST được triển khai trên server tại URL http://<Exam_IP>:2230/api/rest/object để xử lý các bài toán với đối tượng. Yêu cầu: Viết chương trình tại máy trạm (REST client) để giao tiếp với dịch vụ và thực hiện các công việc sau.
+
+//a. Gửi GET /api/rest/object?studentCode=<mã_sinh_viên>&qCode=<qAlias> để nhận JSON gồm requestId và data.
+
+//b. Server trả về `data` là object gồm danh sách `jobs`.
+
+//c. Chọn nhiều job không chồng lấp nhất bằng greedy theo thời điểm kết thúc.
+
+//d. Gửi POST /api/rest/object/submit với body JSON gồm studentCode, qCode, requestId và answer.
+
+//e. Ví dụ: nếu chọn được `J1`, `J3`, `J5` thì `answer` là `J1,J3,J5`.
