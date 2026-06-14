@@ -93,3 +93,16 @@ public class TypedTest {
         channel.shutdown();
     }
 }
+//Một dịch vụ gRPC TypedJudgeService được triển khai trên server tại <Exam_IP>:2240 để xử lý các bài toán với đối tượng có cấu trúc qua Protocol Buffers.
+
+//Yêu cầu: Viết chương trình tại máy trạm (gRPC client, plaintext, không TLS) để giao tiếp với TypedJudgeService và thực hiện các công việc sau.
+
+//a. Tạo gRPC client plaintext tới cổng 2240 và gọi TypedJudgeService.RequestTyped với mã sinh viên và alias runtime được giao.
+
+//b. Server trả về request_id và dữ liệu xét điều kiện đăng ký gồm completed_courses, required_courses, gpa, min_gpa.
+
+//c. Tính danh sách missing_courses là các môn bắt buộc chưa hoàn thành, sắp xếp tăng dần theo mã môn.
+
+//d. Tính gpa_gap = max(0, min_gpa - gpa), làm tròn 2 chữ số thập phân. eligible đúng khi không thiếu môn và gpa_gap bằng 0.
+
+//e. Gọi TypedJudgeService.SubmitTyped với eligible, missing_courses, gpa_gap.
