@@ -1,22 +1,21 @@
 syntax = "proto3";
 
-package judge;
+package GRPC;
+
+option java_package = "GRPC";
+option java_multiple_files = true;
 
 service JudgeService {
-
-  rpc Request(RequestMessage)
-      returns (RequestResponse);
-
-  rpc Submit(SubmitRequest)
-      returns (SubmitResponse);
+  rpc Request (JudgeRequest) returns (JudgeResponse);
+  rpc Submit (SubmitRequest) returns (SubmitResponse);
 }
 
-message RequestMessage {
+message JudgeRequest {
   string student_code = 1;
   string question_alias = 2;
 }
 
-message RequestResponse {
+message JudgeResponse {
   string request_id = 1;
   string data = 2;
 }
