@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+package GRPC;
+
+option java_package = "GRPC";
+option java_multiple_files = true;
+
+service TypedJudgeService {
+
+  rpc RequestTyped (TypedRequest)
+      returns (TypedResponse);
+
+  rpc SubmitTyped (TypedSubmitRequest)
+      returns (TypedSubmitResponse);
+}
+
+message TypedRequest {
+
+  string student_code = 1;
+  string question_alias = 2;
+}
+
+message CourseEligibilityData {
+
+  repeated string completed_courses = 1;
+  repeated string required_courses = 2;
+
+  double gpa = 3;
+  double min_gpa = 4;
+}
+
+message TypedResponse {
+
+  string request_id = 1;
+
+  CourseEligibilityData data = 2;
+}
+
+message TypedAnswer {
+
+  bool eligible = 1;
+
+  repeated string missing_courses = 2;
+
+  double gpa_gap = 3;
+}
+
+message TypedSubmitRequest {
+
+  string student_code = 1;
+
+  string question_alias = 2;
+
+  string request_id = 3;
+
+  TypedAnswer answer = 4;
+}
+
+message TypedSubmitResponse {
+
+  string status = 1;
+
+  string message = 2;
+}
